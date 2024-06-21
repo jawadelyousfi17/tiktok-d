@@ -3,14 +3,14 @@ import Image from 'next/image'
 import { MdHelpCenter } from "react-icons/md";
 
 
-const TiktokMp3 = () => {
+const TiktokMp4 = () => {
   return (
     <div className=' space-y-4'>
         <h3 className='text-lg font-semibold'>
-            Convert any Tiktok video to MP3 in 3 steps
+            Download any tiktok video without watermark
         </h3>
         <p>
-            <a href='/'>TiktokMp3.online</a> allows you to download any tiktok video as mp3 format. its a free tool to convert and download Tiktok to mp3 online. in just 3 steps : 
+            <a href='/'>TiktokMp3.online</a> allows you to download and save any tiktok video. its a free tool to download tiktok video without watermark online. in just 3 steps : 
         </p>
         <div className="flex gap-4  items-center mb-4 mt-4">
           <span className="text-lg font-semibold gradient">Copy</span>
@@ -29,16 +29,13 @@ const TiktokMp3 = () => {
             Our web site  <a href='/'>TiktokMp3.online</a> features : <br/>
             <ul>
                 <li>
-                    Download any tiktok video as mp3
+                    Download any tiktok video without watermark
                 </li>
                 <li>
-                    Convert Tikok videos to mp3 online
+                    Save tiktok video in High quality
                 </li>
                 <li>
                     Free to download any videos
-                </li>
-                <li>
-                    Download in high quality
                 </li>
             </ul>
         </div>
@@ -131,7 +128,7 @@ const TiktokMp3 = () => {
                         Open TiktokMp3.online then paste the link
                     </li>
                     <li>
-                        wait a couple of seconds then click download Mp3
+                        wait a couple of seconds then click download or Download HD
                     </li>
                     </ul> 
             </div>   
@@ -163,20 +160,20 @@ const TiktokMp3 = () => {
             <div>
             <div className='flex gap-2 items-center'>
             <MdHelpCenter />
-                <h3 className='text-lg font-semibold'>What is a TikTok MP3 Downloader?</h3>
+                <h3 className='text-lg font-semibold'>What is a TikTok video Downloader?</h3>
             </div>
             <div>
-                TiktokMp3.online is a tool that allows users to extract audio from tiktok video and save it as an mp3 file.
+                TiktokMp3.online is a tool that allows users to extract audio from tiktok video and save it as an mp3 file or video.
             </div>
             </div>
 
             <div>
             <div className='flex gap-2 items-center'>
             <MdHelpCenter />
-                <h3 className='text-lg font-semibold'>Where can I find my downloaded Tiktok music ?</h3>
+                <h3 className='text-lg font-semibold'>Where can I find my downloaded Tiktok video ?</h3>
             </div>
             <div>
-            Extracted and downloaded TikTok audio files are saved in your 'Downloads' folder.
+            Extracted and downloaded TikTok video files are saved in your 'Downloads' folder.
             </div>
             </div>
             
@@ -187,4 +184,4 @@ const TiktokMp3 = () => {
   )
 }
 
-export default TiktokMp3
+export default TiktokMp4

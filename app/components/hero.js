@@ -1,14 +1,18 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState , useEffect } from "react";
 import { FiLink } from "react-icons/fi";
 import { LiaPasteSolid } from "react-icons/lia";
 import Alert from "./alert";
 import { IoMdClose } from "react-icons/io";
+import Lottie from 'react-lottie';
+
+import animationData from '@/animations/loading.json';
 
 const Hero = ({ data , fonction }) => {
 
   const [linkInput, setLinkInput] = useState("");
+  const section1Ref = useRef(null);
 
 
     async function handlePaste() {
@@ -21,13 +25,35 @@ const Hero = ({ data , fonction }) => {
         }
     }
 
-  
+    const defaultOptions = {
+      loop: true,
+      autoplay: true,
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+    };
+
+    useEffect(() => {
+      if(fonction.isVideoReady) {
+        section1Ref.current.scrollIntoView({ behavior: 'smooth' });
+
+      }
+    } , [fonction.isVideoReady])
+
+    let logo = 'music.png'
+    if(data.type === 'video') {
+     logo = 'play.png'
+    }
 
   return (
-    <section className="flex flex-col gap-4 bg-slate-100 p-4 rounded-lg hrh py-8 gradient-border">
+    <section ref={section1Ref} className="flex flex-col gap-4 bg-slate-100 p-4 rounded-lg hrh py-8 gradient-border">
+
+     {fonction.loading &&  <div className="anim"><Lottie options={defaultOptions} height={80} width={80} /></div>}
+      
       <div className="flex flex-row gap-6 justify-center items-center ">
         <div>
-          <img src="/icons/music.png" className="w-12"></img>
+          <img src={`/icons/${logo}`} className="w-12"></img>
         </div>
         <div>
           <h1 className="text-2xl font-bold gradient">{data.title}</h1>
@@ -58,7 +84,7 @@ const Hero = ({ data , fonction }) => {
         </div>
         
         <button disabled={fonction.loading} onClick={() => fonction.handleDownload(linkInput)} className="btn btn-accent w-full md:w-auto bg-gradient rounded-sm h-8">
-       { fonction.loading &&  <span className="loading loading-spinner loading-sm"></span>}
+       { fonction.loading &&  <Lottie options={defaultOptions} height={20} width={20} />}
           Download
         </button>
       </div>

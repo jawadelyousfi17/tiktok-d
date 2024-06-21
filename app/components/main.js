@@ -9,6 +9,8 @@ import VideoCard from "./videocard";
 import { isValidTiktokUrl } from "@/libs/helpers";
 import axios from "axios";
 import TiktokMp3 from "./landing/tiktok-mp3";
+import TiktokMp4 from "./landing/tiktok-mp4";
+
 const MainPage = ({ data }) => {
   const [linkInput, setLinkInput] = useState("");
   const [isError, setIsError] = useState(false);
@@ -22,6 +24,7 @@ const MainPage = ({ data }) => {
     cover: null,
     hd_play: null,
     play: null,
+    music : null
   });
   const handleDownload = async (url) => {
     setIsError(false);
@@ -52,6 +55,7 @@ const MainPage = ({ data }) => {
     try {
       const res = await axios.request(options);
       const response = res.data;
+      console.log(response)
       if (response.msg !== "success") {
         setErrorMessage(
           "Can't download this video . please check your link or try again"
@@ -68,6 +72,7 @@ const MainPage = ({ data }) => {
         cover: data.origin_cover,
         hd_play: data.hdplay || null,
         play: data.play,
+        music : data.music_info.play
       });
       setIsVideoReady(true)
       setLoading(false)
@@ -93,10 +98,13 @@ const MainPage = ({ data }) => {
           isError,
           errormessage,
           loading,
+          isVideoReady
         }}
       ></Hero>
       {isVideoReady && <VideoCard state={{videoData}} />}
-      <TiktokMp3></TiktokMp3>
+     { data.type==='mp3' && <TiktokMp3></TiktokMp3>}
+     { data.type==='video' && <TiktokMp4></TiktokMp4>}
+
     </div>
   );
 };

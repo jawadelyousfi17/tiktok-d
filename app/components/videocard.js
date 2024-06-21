@@ -1,53 +1,126 @@
-import React, { useState } from "react";
+import React, { useState , useRef } from "react";
 import { MdOutlineFileDownload } from "react-icons/md";
 import { FaMusic } from "react-icons/fa";
 import { BsFillBadgeHdFill } from "react-icons/bs";
 import { motion } from "framer-motion";
 import axios from "axios";
+import Lottie from 'react-lottie';
+
+import animationData from '@/animations/check.json';
 
 const VideoCard = ({ state }) => {
   const [loading, setLoading] = useState(false);
   const [loadingHd, setLoadingHd] = useState(false);
+  const [loadingM, setLoadingM] = useState(false);
+  const [progress, setProgress] = useState(0)
+
+  function getRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 
   async function download(uri) {
+    setProgress(0)
     setLoading(true);
+    document.getElementById('my_modal_5').showModal()
     try {
       const response = await axios.get(uri, {
         responseType: "blob",
+        onDownloadProgress: (progressEvent) => {
+          const totalLength = progressEvent.lengthComputable
+            ? progressEvent.total
+            : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+
+          if (totalLength !== null) {
+            setProgress(Math.round((progressEvent.loaded * 100) / totalLength));
+          }
+        },
       });
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const tempAnchor = document.createElement("a");
       tempAnchor.href = blobUrl;
-      tempAnchor.setAttribute("download", "filename.mp4"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
       tempAnchor.click();
       window.URL.revokeObjectURL(blobUrl);
       setLoading(false);
     } catch (error) {
+      setProgress(0)
       setLoading(false);
       alert("an eror accured plz try again");
       console.error("Error downloading file:", error);
     }
   }
 
-  async function downloadHd(uri) {
-    setLoadingHd(true);
+  async function downloadMp3(uri) {
+    setProgress(0)
+    setLoadingM(true);
+    document.getElementById('my_modal_5').showModal()
+
     try {
       const response = await axios.get(uri, {
         responseType: "blob",
+        onDownloadProgress: (progressEvent) => {
+          const totalLength = progressEvent.lengthComputable
+            ? progressEvent.total
+            : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+
+          if (totalLength !== null) {
+            setProgress(Math.round((progressEvent.loaded * 100) / totalLength));
+          }
+        },
       });
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const tempAnchor = document.createElement("a");
       tempAnchor.href = blobUrl;
-      tempAnchor.setAttribute("download", state.videoData.title+"filename.mp4"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp3"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.click();
+      window.URL.revokeObjectURL(blobUrl);
+      setLoadingM(false);
+    } catch (error) {
+      setLoadingM(false);
+      alert("an eror accured plz try again");
+      console.error("Error downloading file:", error);
+    }
+  }
+
+  async function downloadHd(uri) {
+    setProgress(0)
+    setLoadingHd(true);
+    document.getElementById('my_modal_5').showModal()
+    try {
+      const response = await axios.get(uri, {
+        responseType: "blob",
+        onDownloadProgress: (progressEvent) => {
+          const totalLength = progressEvent.lengthComputable
+            ? progressEvent.total
+            : progressEvent.target.getResponseHeader('content-length') || progressEvent.target.getResponseHeader('x-decompressed-content-length');
+
+          if (totalLength !== null) {
+            setProgress(Math.round((progressEvent.loaded * 100) / totalLength));
+          }
+        },
+      });
+      const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
+      const tempAnchor = document.createElement("a");
+      tempAnchor.href = blobUrl;
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
       tempAnchor.click();
       window.URL.revokeObjectURL(blobUrl);
       setLoadingHd(false);
     } catch (error) {
       setLoadingHd(false);
-      alert("an eror accured plz try again" , uri);
+      alert("an eror accured plz try again", uri);
       console.error("Error downloading file:", error);
     }
-  } 
+  }
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
 
   return (
     <motion.div
@@ -87,12 +160,12 @@ const VideoCard = ({ state }) => {
               <span className="loading loading-spinner loading-sm"></span>
             )}
           </button>
-          <button className="btn btn-neutral rounded-md bg-slate-50 text-black mybtn  flex justify-start">
+          <button onClick={() => downloadMp3(state.videoData.music)} className="btn btn-neutral rounded-md bg-slate-50 text-black mybtn  flex justify-start">
             {" "}
             <FaMusic size={18} />
-            {!loading && "Download Mp3"}
-            {loading && "Downloading"}
-            {loading && (
+            {!loadingM && "Download Mp3"}
+            {loadingM && "Downloading"}
+            {loadingM && (
               <span className="loading loading-spinner loading-sm"></span>
             )}
           </button>
@@ -107,6 +180,37 @@ const VideoCard = ({ state }) => {
           </button>
         </div>
       </div>
+
+      <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+        <div className="modal-box">
+
+          {(loading || loadingHd || loadingM) && <div>
+            <h3 className="font-bold text-lg">Downloading ...</h3>
+            <h3 className="font-medium text-md">You can leave the page now the download will start automaticly</h3>
+            <progress className="progress progress-accent w-full" value={progress} max="100"></progress>
+
+            {/* <div className="py-4 flex justify-center">
+              <div className="radial-progress text-accent font-medium" style={{ "--value": progress, "--size": "8rem", "--thickness": "4px" }} role="progressbar"> {progress} %</div>
+            </div> */}
+          </div>}
+
+          {!(loading || loadingHd || loadingM) && <div className="flex flex-col justify-center items-center ">  
+            <Lottie options={defaultOptions} height={100} width={100} />     
+                   <p className="font-bold text-lg" >Downloaded</p>
+
+          
+          </div>}
+
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              {!(loading || loadingHd || loadingM) && <button className="btn  btn-accent">Close</button>}
+            </form>
+          </div>
+        </div>
+      </dialog>
+
+
     </motion.div>
   );
 };

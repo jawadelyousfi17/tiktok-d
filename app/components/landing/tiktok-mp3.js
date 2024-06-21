@@ -176,7 +176,7 @@ const TiktokMp3 = () => {
                 <h3 className='text-lg font-semibold'>Where can I find my downloaded Tiktok music ?</h3>
             </div>
             <div>
-            Extracted and downloaded TikTok audio files are saved in your 'Downloads' folder.
+            Extracted and downloaded TikTok audio files are saved in your &apos;Downloads&apos; folder.
             </div>
             </div>
             

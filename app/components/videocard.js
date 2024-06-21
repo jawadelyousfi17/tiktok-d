@@ -73,11 +73,11 @@ const VideoCard = ({ state }) => {
 
       <div className="flex flex-row gap-4 ">
         <img src={state.videoData.cover} className="w-1/3 rounded-md"></img>
-        <div className="flex flex-col gap-4 w-full ">
+        <div className="flex flex-col gap-4 w-full pr ">
           <button
             disabled={loading}
             onClick={() => download(state.videoData.play)}
-            className="btn btn-neutral"
+            className="btn btn-neutral rounded-md bg-slate-50 text-black mybtn  flex justify-start"
           >
             {" "}
             {!loading && <MdOutlineFileDownload size={18} />}
@@ -87,7 +87,7 @@ const VideoCard = ({ state }) => {
               <span className="loading loading-spinner loading-sm"></span>
             )}
           </button>
-          <button className="btn btn-neutral">
+          <button className="btn btn-neutral rounded-md bg-slate-50 text-black mybtn  flex justify-start">
             {" "}
             <FaMusic size={18} />
             {!loading && "Download Mp3"}
@@ -96,7 +96,7 @@ const VideoCard = ({ state }) => {
               <span className="loading loading-spinner loading-sm"></span>
             )}
           </button>
-          <button disabled={loadingHd} onClick={() => downloadHd(state.videoData.hd_play)} className="btn btn-neutral">
+          <button disabled={loadingHd} onClick={() => downloadHd(state.videoData.hd_play)} className="btn btn-neutral rounded-md bg-slate-50 text-black mybtn  flex justify-start">
             {" "}
             {!loadingHd && <BsFillBadgeHdFill size={18} />}
             {!loadingHd && "Download HD"}

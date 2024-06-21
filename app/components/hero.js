@@ -41,7 +41,7 @@ const Hero = ({ data , fonction }) => {
        
 
           
-        <div className="input input-bordered flex items-center gap-2 px-0 pl-4 w-full">
+        <div className=" flex items-center gap-2 px-0 pl-4 w-full rounded-sm my-input h-12 md:h-auto">
           <FiLink className="shrink-0" />
           <input
             type="text"
@@ -50,18 +50,21 @@ const Hero = ({ data , fonction }) => {
             value={linkInput}
             onChange={(e) => setLinkInput(e.target.value)}
           />
-          <button onClick={handlePaste} className="  btn btn-neutral bg-slate-950 border-none rounded-tl-none rounded-bl-none text-white ">
+          <button onClick={handlePaste} className="paste">
            {!linkInput && <LiaPasteSolid size={20}  />}
            {linkInput && <IoMdClose  size={20}  />}
 
           </button>
         </div>
         
-        <button disabled={fonction.loading} onClick={() => fonction.handleDownload(linkInput)} className="btn btn-accent w-full md:w-auto bg-gradient">
+        <button disabled={fonction.loading} onClick={() => fonction.handleDownload(linkInput)} className="btn btn-accent w-full md:w-auto bg-gradient rounded-sm h-8">
        { fonction.loading &&  <span className="loading loading-spinner loading-sm"></span>}
           Download
         </button>
       </div>
+
+
+
     </section>
   );
 };

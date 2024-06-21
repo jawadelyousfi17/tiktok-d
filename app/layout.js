@@ -1,9 +1,9 @@
-import { Poppins } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 
 
 
-const inter = Poppins({ subsets: ["latin"] ,    weight: ["400", "500", "600", "700", "800", "900"],
+const inter = Montserrat({ subsets: ["latin"] ,    weight: ["400", "500", "600", "700", "800", "900"],
 
 });
 

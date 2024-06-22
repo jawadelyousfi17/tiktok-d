@@ -7,6 +7,7 @@ import axios from "axios";
 import Lottie from 'react-lottie';
 
 import animationData from '@/animations/check.json';
+import downAnimation from '@/animations/downloading.json';
 
 const VideoCard = ({ state }) => {
   const [loading, setLoading] = useState(false);
@@ -38,7 +39,7 @@ const VideoCard = ({ state }) => {
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const tempAnchor = document.createElement("a");
       tempAnchor.href = blobUrl;
-      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(100,2500).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
       tempAnchor.click();
       window.URL.revokeObjectURL(blobUrl);
       setLoading(false);
@@ -71,7 +72,7 @@ const VideoCard = ({ state }) => {
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const tempAnchor = document.createElement("a");
       tempAnchor.href = blobUrl;
-      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp3"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(100,2500).toString()+ "-Tiktoomp3.mp3"); // Replace 'filename.ext' with your desired filename
       tempAnchor.click();
       window.URL.revokeObjectURL(blobUrl);
       setLoadingM(false);
@@ -102,7 +103,7 @@ const VideoCard = ({ state }) => {
       const blobUrl = window.URL.createObjectURL(new Blob([response.data]));
       const tempAnchor = document.createElement("a");
       tempAnchor.href = blobUrl;
-      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(10,50).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
+      tempAnchor.setAttribute("download", state.videoData.title +getRandomNumber(100,2500).toString()+ "-Tiktoomp3.mp4"); // Replace 'filename.ext' with your desired filename
       tempAnchor.click();
       window.URL.revokeObjectURL(blobUrl);
       setLoadingHd(false);
@@ -122,12 +123,21 @@ const VideoCard = ({ state }) => {
     }
   };
 
+  const downAnim = {
+    loop: true,
+    autoplay: true,
+    animationData: downAnimation,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 1.05 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.2, ease: "easeInOut" }}
-      className=" space-y-4 bg-slate-50 p-4 rounded-md  gradient-border"
+      className=" space-y-4 bg-slate-50 p-4 rounded-md  "
     >
       <div className="flex flex-row gap-4 items-center">
         <div className="avatar">
@@ -184,10 +194,13 @@ const VideoCard = ({ state }) => {
       <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box">
 
-          {(loading || loadingHd || loadingM) && <div>
+          {(loading || loadingHd || loadingM) && <div className="flex flex-col justify-center items-center " >
+
+            <Lottie options={downAnim} height={120} width={120}  />     
+
             <h3 className="font-bold text-lg">Downloading ...</h3>
-            <h3 className="font-medium text-md">You can leave the page now the download will start automaticly</h3>
-            <progress className="progress progress-accent w-full" value={progress} max="100"></progress>
+            {/* <h3 className="font-medium text-md">You can leave the page now the download will start automaticly</h3> */}
+            <progress className="progress progress-accent w-full mt-4" value={progress} max="100"></progress>
 
             {/* <div className="py-4 flex justify-center">
               <div className="radial-progress text-accent font-medium" style={{ "--value": progress, "--size": "8rem", "--thickness": "4px" }} role="progressbar"> {progress} %</div>

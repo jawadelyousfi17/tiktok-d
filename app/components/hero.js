@@ -84,7 +84,7 @@ const Hero = ({ data , fonction }) => {
         </div>
         
         <button disabled={fonction.loading} onClick={() => fonction.handleDownload(linkInput)} className="btn btn-accent w-full md:w-auto bg-gradient rounded-sm h-8">
-       { fonction.loading &&  <Lottie options={defaultOptions} height={20} width={20} />}
+       {/* { fonction.loading &&  <Lottie options={defaultOptions} height={20} width={20} />} */}
           Download
         </button>
       </div>

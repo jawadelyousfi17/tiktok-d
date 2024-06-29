@@ -17,8 +17,8 @@ const Navbar = () => {
           <ul className="p-2 bg-base-100 rounded-sm links ">
             <li><a href='/'>Tiktok MP3 downloader</a></li>
             <li><a href='/tiktok-video-downloader'>Tiktok video downloader</a></li>
-            <li><a href='/tiktok-image-downloader'>Tiktok image downloader</a></li>
-            <li><a href='/tiktok-slide-downloader'>tiktok slide downloader</a></li>
+            {/* <li><a href='/tiktok-image-downloader'>Tiktok image downloader</a></li>
+            <li><a href='/tiktok-slide-downloader'>tiktok slide downloader</a></li> */}
           </ul>
         </details>
       </li>

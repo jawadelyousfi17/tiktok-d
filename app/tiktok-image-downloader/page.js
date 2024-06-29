@@ -2,10 +2,6 @@ import Footer from "../components/footer"
 import MainPage from "../components/main"
 import Navbar from "../components/navbar"
 
-export const metadata = {
-  title: "Tiktok video downloader without watermark",
-  description: "Download any tiktok video without watermark. Easy, Free and Fast way to download video from tiktok",
-};
 
 
 const Page = () => {

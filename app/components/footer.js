@@ -9,22 +9,22 @@ const Footer = () => {
     </aside> 
     <nav>
       <h6 className="footer-title">Services</h6> 
-      <a className="link link-hover">Tiktok Mp3 downloader</a>
-      <a className="link link-hover">Tiktok video downloader</a>
-      <a className="link link-hover">Tiktok image downloader</a>
-      <a className="link link-hover">Tiktok slide downloader</a>
+      <a href='/' className="link link-hover">Tiktok Mp3 downloader</a>
+      <a href='/tiktok-video-downloader' className="link link-hover">Tiktok video downloader</a>
+      {/* <a href='/tiktok-image-downloader' className="link link-hover">Tiktok image downloader</a> */}
+      {/* <a className="link link-hover">Tiktok slide downloader</a> */}
     </nav> 
     <nav>
       <h6 className="footer-title">Company</h6> 
-      <a className="link link-hover">About us</a>
+      {/* <a className="link link-hover">About us</a>
       <a className="link link-hover">Contact</a>
-      <a className="link link-hover">Jobs</a>
+      <a className="link link-hover">Jobs</a> */}
     </nav> 
     <nav>
       <h6 className="footer-title">Legal</h6> 
-      <a className="link link-hover">Terms of use</a>
+      {/* <a className="link link-hover">Terms of use</a>
       <a className="link link-hover">Privacy policy</a>
-      <a className="link link-hover">Cookie policy</a>
+      <a className="link link-hover">Cookie policy</a> */}
     </nav>
   </footer>
   )

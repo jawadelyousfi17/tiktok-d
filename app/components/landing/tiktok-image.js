@@ -1,0 +1,187 @@
+import Image from 'next/image'
+
+import { MdHelpCenter } from "react-icons/md";
+
+
+const TiktokImage = () => {
+  return (
+    <div className=' space-y-4'>
+        <h3 className='text-lg font-semibold'>
+            Download any tiktok Image 
+        </h3>
+        <p>
+            <a href='/'>TiktokMp3.online Image downloader</a> allows you to download and save any tiktok image. its a free tool to download tiktok video and Images, audio without watermark online. in just 3 steps : 
+        </p>
+        <div className="flex gap-4  items-center mb-4 mt-4">
+          <span className="text-lg font-semibold gradient">Copy</span>
+          <img src="/icons/arrow.png"className="w-6"></img>
+          <span className="text-lg font-semibold gradient">Paste</span>
+          <img src="/icons/arrow.png" className="w-6"></img>
+          <span className="text-lg font-semibold gradient">Download</span>
+        </div>
+
+        <h3 className='text-lg font-semibold'>
+           Main features
+           
+        </h3>
+
+        <div>
+            Our web site  <a href='/'>TiktokMp3.online</a> features : <br/>
+            <ul>
+                <li>
+                    Download any tiktok image, video and audio without watermark
+                </li>
+                <li>
+                    Save tiktok video, image and audio in High quality
+                </li>
+                <li>
+                    Free to download any videos or image or audio
+                </li>
+            </ul>
+        </div>
+        
+        {/* <b className='text-lg font-semibold mb-4'>How To convert Tiktok to MP3?</b> */}
+        <p className='text-lg font-semibold'>How dose it works ?</p>
+        <ol className='space-y-4'>
+            <li>
+                Open tiktok and choose the video you want to download
+                
+            </li>
+            <li>
+                <p className='text-md font-medium mb-2'>Click Share</p>
+                <Image
+                    src={'/images/screen1.jpg'}
+                    alt='Tiktok to mp3 Click share'
+                    width={300}
+                    height={400}
+                    className=' rounded-lg w-full md:w-1/2'
+                ></Image>
+            </li>
+
+            <li>
+                <p className='text-md font-medium mb-2'>Copy the link</p>
+                <Image
+                    src={'/images/screen2.jpg'}
+                    alt='Tiktok to mp3 copy the link'
+                    width={300}
+                    height={400}
+                    className=' rounded-lg w-full md:w-1/2'
+                ></Image>
+            </li>
+
+            <li>
+                <p className='text-md font-medium mb-2'>Open <a href='/'>TiktokMp3.online</a> then Paste the tiktok video link </p>
+                <Image
+                    src={'/images/screen4.jpg'}
+                    alt='Tiktok to mp3 Click share'
+                    width={300}
+                    height={400}
+                    className=' rounded-lg w-full md:w-1/2'
+                ></Image>
+            </li>
+            <li>
+                <p className='text-md font-medium mb-2'>Press download and wait until the video is fetched</p>
+                <Image
+                    src={'/images/screen5.jpg'}
+                    alt='Tiktok to mp3 Click share'
+                    width={300}
+                    height={400}
+                    className=' rounded-lg w-full md:w-1/2'
+                ></Image>
+            </li>
+
+            <li>
+                <p className='text-md font-medium mb-2'>Press download MP3 </p>
+                <Image
+                    src={'/images/screen6.jpg'}
+                    alt='Tiktok to mp3 Click share'
+                    width={300}
+                    height={400}
+                    className=' rounded-lg w-full md:w-1/2'
+                ></Image>
+            </li>
+            
+        </ol>
+
+
+        <div className='space-y-4'>
+            <span className='text-xl font-bold gradient'>Frequently asked questions
+            </span>
+            <div>
+              <div className='flex gap-2 items-center'>
+            <MdHelpCenter />
+                <h3 className='text-lg font-semibold'>How to download tiktok image</h3>
+            </div>
+            <div>
+                To convert tiktok video to MP3 format, first you need to get the tiktok video link, its easy :
+                <ul className='list'>
+                    <li>
+                        Open tiktok
+                    </li>
+                    <li>
+                        click share button
+                    </li>
+                    <li>
+                        Click copy the link button
+                    </li>
+                    <li>
+                        Open TiktokMp3.online then paste the link
+                    </li>
+                    <li>
+                        wait a couple of seconds then click download or Download HD
+                    </li>
+                    </ul> 
+            </div>   
+            </div>
+
+            <div>
+
+
+            <div className='flex gap-2 items-center'>
+            <MdHelpCenter />
+                <h3 className='text-lg font-semibold'>Why is the Tiktok video downloader not working?</h3>
+            </div>
+            <div>
+                If the Video downloader or the Mp3 downloader not working, it could due to :
+            <ul className='list'>
+                    <li>
+                        An invalid Tiktok url 
+                    </li>
+                    <li>
+                       Browser copability problems
+                    </li>
+                    <li>
+                        Internet connectivity problems
+                    </li>
+                    </ul> 
+            </div>
+            </div>
+           
+            <div>
+            <div className='flex gap-2 items-center'>
+            <MdHelpCenter />
+                <h3 className='text-lg font-semibold'>What is a TikTok video Downloader?</h3>
+            </div>
+            <div>
+                TiktokMp3.online is a tool that allows users to extract audio from tiktok video and save it as an mp3 file or video.
+            </div>
+            </div>
+
+            <div>
+            <div className='flex gap-2 items-center'>
+            <MdHelpCenter />
+                <h3 className='text-lg font-semibold'>Where can I find my downloaded Tiktok video ?</h3>
+            </div>
+            <div>
+            Extracted and downloaded TikTok video files are saved in your &apos;Downloads&apos; folder.
+            </div>
+            </div>
+            
+    
+        </div>
+
+    </div>
+  )
+}
+
+export default TiktokImage

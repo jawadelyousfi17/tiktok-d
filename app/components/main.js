@@ -61,7 +61,7 @@ const MainPage = ({ data }) => {
       console.log(response)
       if (response.msg !== "success") {
         setErrorMessage(
-          "Can't download this video . please check your link or try again"
+          "Can't download this video .try again"
         );
         setIsError(true);
         setLoading(false);

@@ -50,7 +50,7 @@ const MainPage = ({ data }) => {
         hd: "1",
       },
       headers: {
-       'x-rapidapi-key': '2bd5372d1amshfdfc5d0d770623dp1c8bb4jsn1048a81cbff5',
+       'x-rapidapi-key': '91ce630dc3msh1438c76c8ca9858p109dc8jsn5681bbb1d9fe',
 		'x-rapidapi-host': 'tiktok-scraper7.p.rapidapi.com'
       },
     };
